@@ -1,9 +1,9 @@
-// TASK 1
+// TASK 1 Çirkli data-nı təmizləmək
 export function cleanTrips(trips) {
   return trips.filter((trip) => trip.valid === true && trip.fare > 0);
 }
 
-// TASK 2
+// TASK 2 Günün gəliri
 export function totalRevenue(trips) {
   const clean = cleanTrips(trips);
   const sum = clean.reduce((acc, trip) => acc + trip.fare, 0);
@@ -11,7 +11,8 @@ export function totalRevenue(trips) {
   return Math.round(sum * 100) / 100;
 }
 
-//TASK 3
+//TASK 3  Neçə fərqli sərnişin / bloklanma yoxlaması
+
 export function uniquePassengers(trips) {
   const clean = cleanTrips(trips);
   return new Set(clean.map((trip) => trip.cardId));
@@ -22,7 +23,7 @@ export function isBlocked(cardId, blacklist) {
   return blocked.has(cardId);
 }
 
-//TASK 4
+//TASK 4  Stansiya üzrə gəlir
 export function revenueByStation(trips) {
   const clean = cleanTrips(trips);
   return clean.reduce((report, trip) => {
@@ -32,7 +33,7 @@ export function revenueByStation(trips) {
   }, new Map());
 }
 
-// TASK 5
+// TASK 5 Cihaz yaddaşı (unudulan cihazın məlumatı da silinsin)
 export function createDeviceCache() {
   const cache = new WeakMap();
 
@@ -50,7 +51,7 @@ export function createDeviceCache() {
   };
 }
 
-//TASK 6
+//TASK 6  Eyni trip iki dəfə banka getməsin
 export function createProcessedRegistry() {
   const processed = new WeakSet();
 
@@ -65,7 +66,7 @@ export function createProcessedRegistry() {
   };
 }
 
-// TASK 7 
+// TASK 7 Cihazın göndərdiyi rəqəm siqnalını oxumaq
 export function decodeCounter(packet) {
   const total = packet.reduce((sum, n) => sum + n, 0);
 
