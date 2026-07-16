@@ -1,0 +1,7 @@
+{
+  "name": "bakucard-telemetry-pipeline",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "BakuCard trip telemetry data pipeline (ES6 data manipulation only)",
+  "main": "test.js"
+}
