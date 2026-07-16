@@ -1,13 +1,9 @@
-// pipeline.js
-// RULES: no for/while/do-while/forEach, no var, no mutation of input arrays.
-// Only map / filter / reduce / Set / Map / WeakMap / WeakSet / TypedArrays.
-
-// ---------- TASK 1 : clean the data ----------
+// TASK 1
 export function cleanTrips(trips) {
   return trips.filter((trip) => trip.valid === true && trip.fare > 0);
 }
 
-// ---------- TASK 2 : revenue of the day ----------
+// TASK 2
 export function totalRevenue(trips) {
   const clean = cleanTrips(trips);
   const sum = clean.reduce((acc, trip) => acc + trip.fare, 0);
@@ -15,7 +11,7 @@ export function totalRevenue(trips) {
   return Math.round(sum * 100) / 100;
 }
 
-// ---------- TASK 3 : unique passengers & blacklist ----------
+//TASK 3
 export function uniquePassengers(trips) {
   const clean = cleanTrips(trips);
   return new Set(clean.map((trip) => trip.cardId));
@@ -26,7 +22,7 @@ export function isBlocked(cardId, blacklist) {
   return blocked.has(cardId);
 }
 
-// ---------- TASK 4 : revenue report per station ----------
+//TASK 4
 export function revenueByStation(trips) {
   const clean = cleanTrips(trips);
   return clean.reduce((report, trip) => {
@@ -36,7 +32,7 @@ export function revenueByStation(trips) {
   }, new Map());
 }
 
-// ---------- TASK 5 : device cache (WeakMap) ----------
+// TASK 5
 export function createDeviceCache() {
   const cache = new WeakMap();
 
@@ -54,7 +50,7 @@ export function createDeviceCache() {
   };
 }
 
-// ---------- TASK 6 : prevent double charging (WeakSet) ----------
+//TASK 6
 export function createProcessedRegistry() {
   const processed = new WeakSet();
 
@@ -69,7 +65,7 @@ export function createProcessedRegistry() {
   };
 }
 
-// ---------- TASK 7 : binary packet decoding (Typed Arrays) ----------
+// TASK 7 
 export function decodeCounter(packet) {
   const total = packet.reduce((sum, n) => sum + n, 0);
 
@@ -84,7 +80,6 @@ export function decodeCounter(packet) {
 }
 
 export function packCounter(numbers) {
-  // Uint8Array only stores 0-255. Anything outside that range
-  // wraps around modulo 256 (e.g. 300 -> 44, -1 -> 255).
+  
   return Uint8Array.from(numbers);
 }
